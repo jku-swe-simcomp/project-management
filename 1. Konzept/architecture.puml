@@ -1,0 +1,43 @@
+@startuml
+
+[Service Registry]
+
+package "Simulation Adaptor Endpoints" {
+  [Adaptor 1] --|> [Abstract Endpoint]
+  [Adaptor 2] --|> [Abstract Endpoint]
+}
+
+package "Gateway" {
+[Endpoint Manager]
+[Execution Service]
+[Anomaly Detection]
+[Scheduled Task Service]
+}
+
+package "Simulations" {
+[Simulation 1]
+[Simulation 2]
+}
+
+[Endpoint Manager] --> [Service Registry] : Queries
+[Endpoint Manager] --> [Adaptor 1] : Routes requests
+[Endpoint Manager] --> [Adaptor 2] : Routes requests
+[Abstract Endpoint] --> [Service Registry] : Register
+[Adaptor 1] --> [Simulation 1] : Execute Operation
+[Adaptor 2] --> [Simulation 2] : Execute Operation
+[Endpoint Manager] --> [Execution Service] : Uses
+[Endpoint Manager] --> [Scheduled Task Service] : Uses
+[Endpoint Manager] --> [Anomaly Detection] : Uses
+
+note right of [Endpoint Manager]
+  Logs interactions
+end note
+
+note left of [Service Registry]
+  Keeps information about 
+  registered services (endpoints, status, health)
+end note
+
+[Client] --> [Endpoint Manager] : Sends requests
+
+@enduml

@@ -1,0 +1,28 @@
+@startgantt
+
+title Project Plan for System Implementation
+
+[Initialization] lasts 2 days
+[Setup Development Environment] lasts 3 days
+[Design Abstractions] lasts 10 days
+[Implement Adaptor 1] lasts 14 days
+[Implement Adaptor 2] lasts 14 days
+[Setup Service Registry DB] lasts 3 days
+[Implement Service Registry] lasts 7 days
+[Implement Gateway Service] lasts 21 days
+[Test Adaptors] lasts 7 days
+[Test Service Registry] lasts 7 days
+[Test Gateway Service] lasts 7 days
+
+[Setup Development Environment] starts at [Initialization]'s end
+[Design Abstractions] starts at [Setup Development Environment]'s end
+[Implement Adaptor 1] starts at [Design Abstractions]'s end
+[Implement Adaptor 2] starts at [Design Abstractions]'s end
+[Setup Service Registry DB] starts at [Implement Adaptor 1]'s end
+[Implement Service Registry] starts at [Setup Service Registry DB]'s end
+[Implement Gateway Service] starts at [Implement Service Registry]'s end
+[Test Adaptors] starts at [Implement Gateway Service]'s end
+[Test Service Registry] starts at [Implement Gateway Service]'s end
+[Test Gateway Service] starts at [Implement Gateway Service]'s end
+
+@endgantt
