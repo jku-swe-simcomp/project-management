@@ -20,8 +20,7 @@ package "Simulations" {
 }
 
 [Endpoint Manager] --> [Service Registry] : Queries
-[Endpoint Manager] --> [Adaptor 1] : Routes requests
-[Endpoint Manager] --> [Adaptor 2] : Routes requests
+[Endpoint Manager] --> [Abstract Endpoint] : Routes requests
 [Abstract Endpoint] --> [Service Registry] : Register
 [Adaptor 1] --> [Simulation 1] : Execute Operation
 [Adaptor 2] --> [Simulation 2] : Execute Operation
