@@ -2,9 +2,9 @@
 Documentation and project-management related documents of the project.
 
 ## Use Cases
-An overview of the use cases can be found  [here](1.1%20Use%20Cases/overview.md).
+An overview of the use cases can be found  [here](use-cases/overview.md).
 
-![Alt text](1.1%20Use%20Cases/diagram.png)
+![Alt text](use-cases/diagram.png)
 
 
 ## Architecture
