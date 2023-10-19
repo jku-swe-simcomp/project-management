@@ -1,0 +1,31 @@
+@startuml
+left to right direction
+skinparam packageStyle rectangle
+actor Benutzer as User
+
+package "Roboterarm-Service" {
+    usecase "Interaktion mit Ausführungsinstanz" as UC1
+    usecase "Aufgaben als Ausführungsschritte definieren & auslösen" as UC2
+    usecase "Anomalie-Erkennung" as UC5
+    usecase "Zustandsüberprüfung einer Ausführungsinstanz" as UC11
+    usecase "Dynamisches Hinzufügen von Simulationen" as UC3
+    usecase "Monitoring & Logging" as UC6
+    usecase "Lastausgleich" as UC7
+    usecase "Geplante Aufgaben" as UC8
+    usecase "Fehlerbehandlung & Benachrichtigungen" as UC9
+    usecase "Backup & Wiederherstellung" as UC10
+    usecase "Dynamische Interaktion mit Simulationen" as UC4
+}
+
+User --> UC1
+User --> UC2
+User --> UC3
+User --> UC4
+User --> UC11
+
+@enduml
+
+
+
+
+
