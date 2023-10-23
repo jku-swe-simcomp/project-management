@@ -9,15 +9,18 @@ activate A
 A -> SR: Register at startup
 D -> S: Setup simulation
 activate S
+note right of D: Operation specific to adaptor
 D -> A: Add simulation connection details
 A -> S: Test connection
 U -> SR: Ask about existing adaptors
 SR -> U: Inform about adaptor (address and supported actions)
 U -> A: Initialize session
 A -> A: Reserve available simulation for user
+A -> A: Start session timeout
 A -> U: Return session key
 loop Send and process commands in session
     U -> A: Send command
+	A -> A: Restart session timeout
     A -> S: Forward command to simulation
     S -> A: Return execution result
     A -> U: Return execution result
