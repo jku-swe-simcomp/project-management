@@ -8,7 +8,7 @@ An overview of the use cases can be found  [here](use-cases/overview.md).
 
 
 ## Architecture
-![image](https://github.com/jku-swe-simcomp/project-management/assets/52571862/c2880311-249b-4d82-be3e-3d441aeb5f6b)
+![architecture](https://github.com/jku-swe-simcomp/project-management/assets/52571862/c64eff55-bbf8-4213-ad90-321bd6df1d83)
 
 
 
