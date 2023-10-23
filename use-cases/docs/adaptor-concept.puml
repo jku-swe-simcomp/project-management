@@ -1,0 +1,33 @@
+@startuml
+participant "User" as U
+participant "Developer" as D
+participant "Adaptor" as A
+participant "Service Registry" as SR
+participant "Simulation" as S
+
+activate A
+A -> SR: Register at startup
+D -> S: Setup simulation
+activate S
+D -> A: Add simulation connection details
+A -> S: Test connection
+U -> SR: Ask about existing adaptors
+SR -> U: Inform about adaptor (address and supported actions)
+U -> A: Initialize session
+A -> A: Reserve available simulation for user
+A -> U: Return session key
+loop Send and process commands in session
+    U -> A: Send command
+    A -> S: Forward command to simulation
+    S -> A: Return execution result
+    A -> U: Return execution result
+end
+
+U -> A: Close session
+note over A: If session not closed by user, \nAdaptor closes it after timeout.
+A -> A: Free reserved simulation
+A -> SR: Unregister at shutdown
+deactivate A
+
+
+@enduml
