@@ -2,10 +2,8 @@
 
 [Service Registry]
 
-package "Simulation Adaptor Endpoints" {
-  [Adaptor 1] --|> [Abstract Endpoint]
-  [Adaptor 2] --|> [Abstract Endpoint]
-}
+[Adaptor 1] --|> [Abstract Endpoint]
+[Adaptor 2] --|> [Abstract Endpoint]
 
 package "Gateway" {
 [Endpoint Manager]
@@ -14,10 +12,8 @@ package "Gateway" {
 [Scheduled Task Service]
 }
 
-package "Simulations" {
 [Simulation 1]
 [Simulation 2]
-}
 
 [Endpoint Manager] --> [Service Registry] : Queries
 [Endpoint Manager] --> [Abstract Endpoint] : Routes requests
@@ -38,5 +34,9 @@ note left of [Service Registry]
 end note
 
 [Client] --> [Endpoint Manager] : Sends requests
+[Developer] --> [Simulation 1] : Setup
+[Developer] --> [Adaptor 1] : Adds simulation
+[Developer] --> [Simulation 2]: Setup
+[Developer] --> [Adaptor 2]: Adds simulation
 
 @enduml
