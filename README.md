@@ -8,7 +8,8 @@ An overview of the use cases can be found  [here](use-cases/overview.md).
 
 
 ## Architecture
-![image](https://github.com/jku-swe-simcomp/project-management/assets/52571862/d83d0717-f456-4354-b05b-73ef6ab84341)
+![image](https://github.com/jku-swe-simcomp/project-management/assets/52571862/c2880311-249b-4d82-be3e-3d441aeb5f6b)
+
 
 
 ## Adaptor Lifecycle
