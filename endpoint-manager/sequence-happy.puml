@@ -1,0 +1,34 @@
+@startuml
+participant "User" as U
+participant "Manager" as M
+participant "Manager Thread 1" as MT1
+participant "Manager Thread 2" as MT2
+participant "Registry" as R
+participant "Webots_A" as W
+participant "Gazebo_A" as G
+
+U -> M: POST /session, {"SELECTED", ["WEBOTS", "GAZEBO"]}
+M -> R: GET
+R -> M: {[{"WEBOTS",..},{"GAZEBO",...}]}
+M -> W: POST /session
+W -> M: "1234.."
+M -> G: POST /session
+G -> M: "4321.."
+M -> U: "2222.."
+U -> M: POST /2222../action/, {"COMPOSITE_COMMAND",..}
+M -> M: validate supported actions
+M -> M: add async execution tasks
+M -> MT1: task
+activate MT1
+M -> MT2: task
+activate MT2
+M -> U: "8888.." (execution-id)
+MT1 -> W: POST /1234../action, {"COMPOSITE_COMMAND",..}
+MT2 -> G: POST /4321../action, {"COMPOSITE_COMMAND",..}
+W -> MT1: {...} (execution-result)
+MT1 -> M: {...}
+deactivate MT1
+U -> M: GET /8888../execution
+M -> U: ["WEBOTS":{200, "FINISHED", ...}, "GAZEBO":{202, "RUNNING",..}]
+
+@enduml
