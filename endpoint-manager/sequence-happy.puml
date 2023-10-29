@@ -6,29 +6,71 @@ participant "Manager Thread 2" as MT2
 participant "Registry" as R
 participant "Webots_A" as W
 participant "Gazebo_A" as G
-
+activate U
+note right of U: "SELECTED" | "ANY"
 U -> M: POST /session, {"SELECTED", ["WEBOTS", "GAZEBO"]}
+activate M
+note right of M: Trying to obtain requested sessions
 M -> R: GET
+activate R
 R -> M: {[{"WEBOTS",..},{"GAZEBO",...}]}
+deactivate R
 M -> W: POST /session
+activate W
 W -> M: "1234.."
+deactivate W
 M -> G: POST /session
+activate G
 G -> M: "4321.."
-M -> U: "2222.."
-U -> M: POST /2222../action/, {"COMPOSITE_COMMAND",..}
+deactivate G
+M -> U: 200 OK: {"2222..", ["WEBOTS", "GAZEBO"]}
+deactivate M
+loop send and process commands in session
+U -> M: POST /2222../action/, {"COMMAND",..}
+activate M
 M -> M: validate supported actions
 M -> M: add async execution tasks
 M -> MT1: task
 activate MT1
 M -> MT2: task
 activate MT2
-M -> U: "8888.." (execution-id)
-MT1 -> W: POST /1234../action, {"COMPOSITE_COMMAND",..}
-MT2 -> G: POST /4321../action, {"COMPOSITE_COMMAND",..}
+note left of M: Executions are processed asynchronously and execution-id gets returned
+M -> U: 202 ACCEPTED: "8888.."
+deactivate M
+MT1 -> W: POST /1234../action, {"COMMAND",..}
+activate W
+note right of W: Executing action against Webots
+MT2 -> G: POST /4321../action, {"COMMAND",..}
+activate G
+note right of G: Executing action against Gazebo
 W -> MT1: {...} (execution-result)
+deactivate W
 MT1 -> M: {...}
 deactivate MT1
 U -> M: GET /8888../execution
-M -> U: ["WEBOTS":{200, "FINISHED", ...}, "GAZEBO":{202, "RUNNING",..}]
-
+activate M
+note right of M: GAZEBO is still running
+M -> U: 200 OK: ["WEBOTS":{200, "FINISHED", ...}, "GAZEBO":{202, "RUNNING",..}]
+deactivate M
+G -> MT2: {...} (execution-result)
+deactivate G
+MT2 -> M: {...}
+deactivate MT2
+U -> M: GET /8888../execution
+activate M
+M -> U: 200 OK: ["WEBOTS":{200, "FINISHED", ...}, "GAZEBO":{200, "FINISHED",..}]
+deactivate M
+end
+U -> M: DELETE /session/2222..
+activate M
+M -> W: DELETE /session/1234..
+activate W
+W -> M: OK
+deactivate W
+M -> G: DELETE /session/4321..
+activate G
+G -> M: OK
+deactivate G
+M -> U: 200 OK
+deactivate M
 @enduml

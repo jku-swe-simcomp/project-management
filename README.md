@@ -5,7 +5,12 @@ Documentation and project-management related documents of the project.
 An overview of the use cases can be found  [here](use-cases/overview.md).
 
 ## Architecture
-![architecture](https://github.com/jku-swe-simcomp/project-management/assets/52571862/c64eff55-bbf8-4213-ad90-321bd6df1d83)
+![architecture](./1.%20Konzept/architecture.png)
 
 ## Adaptor Lifecycle
-![adaptor-concept](https://github.com/jku-swe-simcomp/project-management/assets/52571862/613ac8ca-4f01-4267-bd3b-a995354347c6)
+The lifecycle of an adaptor is depicted below.
+![adaptor-concept](./adaptor/adaptor-concept.png)
+
+## Simulation Session
+The happy path of a simulation session is depicted below.
+![simulation-session](./endpoint-manager/sequence-happy.png)
