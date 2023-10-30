@@ -18,6 +18,7 @@ draft = false
 | Trigger               | _<the action upon the system that starts the use case, may be time event>_ |
 | Priority              | _<how critical to your system/organization>_                               |
 | Frequency             | _<how often it is expected to happen>_                                     |
+| Phase                 | _<in which phase the feature is planned>_                                  |
 
 Usage example:
 
