@@ -12,8 +12,9 @@ This is an overview of all the identified use-cases:
 - [uc10 - Backup und Wiederherstellung](./uc10.md)
 - [uc11 - Assertion](./uc11.md)
 - [uc12 - Interaktionen persistent protokollieren](./uc12.md)
-- [uc13 - Execution Replay](./uc13.md)
-- [uc14 - Zustandsabfragen](./uc14.md)
+- [uc13 - Webots Simulation](./uc13.md)
+- [uc14 - Execution Replay](./uc14.md)
+- [uc15 - Zustandsabfragen](./uc15.md)
 
 
 ## Overview by Phases
@@ -27,6 +28,7 @@ Below is an overview of the use-cases assigned to the different project phases (
 ### Priority 2
 - [uc02 - Aufgabenszenarien definieren und ausführen](./uc02.md)
 - [uc03 - Dynamisches Hinzufügen von Simulationen](./uc03.md)
+- [uc13 - Webots Simulation](./uc13.md)
 
 ### Priority 3
 - [uc09 - Fehlerbehandlung und Benachrichtigung](./uc09.md)
