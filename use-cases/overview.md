@@ -23,7 +23,7 @@ Below is an overview of the use-cases assigned to the different project phases (
 ## Overview by Phase 1
 ### Priority 1
 - [uc01 - Einheitliche Interaktion mit Ausführungsinstanzen](./uc01.md)
-- [uc14 - Zustandsabfragen](./uc14.md)
+- [uc15 - Zustandsabfragen](./uc15.md)
 
 ### Priority 2
 - [uc02 - Aufgabenszenarien definieren und ausführen](./uc02.md)
@@ -47,7 +47,7 @@ Below is an overview of the use-cases assigned to the different project phases (
 ## Overview by Phase 3 
 ### Priority 1
 - [uc10 - Backup und Wiederherstellung](./uc10.md)
-- [uc13 - Execution Replay](./uc13.md)
+- [uc14 - Execution Replay](./uc14.md)
 ### Priority 2
 - [uc08 - Geplante Aufgaben](./uc08.md)
 
@@ -63,8 +63,8 @@ uc01 -> Adaptor-Schnittstelle bitte um Feedback
 - [uc04 - Dynamische Interaktion mit Simulationen (Weboberfläche)](./uc04.md)
 - [uc05 - Anomalie-Erkennung](./uc05.md)
 - [uc11 - Assertion](./uc11.md)
-- [uc13 - Execution Replay](./uc13.md)
-- [uc14 - Zustandsabfragen](./uc14.md)
+- [uc14 - Execution Replay](./uc14.md)
+- [uc15 - Zustandsabfragen](./uc15.md)
 ### Kevin Schütz
 - [uc02 - Aufgabenszenarien definieren und ausführen](./uc02.md)
 - [uc08 - Geplante Aufgaben](./uc08.md)
