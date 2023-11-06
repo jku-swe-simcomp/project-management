@@ -6,30 +6,39 @@ participant "Service Registry" as SR
 participant "Simulation" as S
 
 activate A
-A -> SR: Register at startup
+A -> SR: POST /registration {"ADAPTOR_NAME", "HOST", "PORT"}
+activate SR
+SR --> A: 200 OK
+deactivate SR
 D -> S: Setup simulation
+activate D
 activate S
 note right of D: Operation specific to adaptor
 D -> A: Add simulation connection details
-A -> S: Test connection
-U -> SR: Ask about existing adaptors
-SR -> U: Inform about adaptor (address and supported actions)
-U -> A: Initialize session
+deactivate D
+U -> SR: GET /registration
+activate SR
+activate U
+SR --> U: 200 OK, [{"WEBOTS",..},{"GAZEBO",..}]
+deactivate SR
+U -> A: POST /session/init
 A -> A: Reserve available simulation for user
 A -> A: Start session timeout
-A -> U: Return session key
+A --> U: 200 OK, "1234.."
 loop Send and process commands in session
-    U -> A: Send command
+    U -> A: POST /session/1234../execution, {"SET_POSITION",..}
 	A -> A: Restart session timeout
     A -> S: Forward command to simulation
-    S -> A: Return execution result
-    A -> U: Return execution result
+    S --> A: Return execution result
+    A --> U: 200 OK, {"Succesfully set position",..}
 end
 
-U -> A: Close session
+U -> A: DELETE /session/1234..
+deactivate U
 note over A: If session not closed by user, \nAdaptor closes it after timeout.
 A -> A: Free reserved simulation
-A -> SR: Unregister at shutdown
+A -> SR: DELETE /registration/{ADAPTOR_NAME}
+SR --> A: 200 OK
 deactivate A
 
 

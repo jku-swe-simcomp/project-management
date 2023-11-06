@@ -2,11 +2,11 @@
 
 [Service Registry]
 
-[Adaptor 1] --|> [Abstract Endpoint]
-[Adaptor 2] --|> [Abstract Endpoint]
+[Adaptor 1] --|> [Adaptor REST Controller]
+[Adaptor 2] --|> [Adaptor REST Controller]
 
 package "Gateway" {
-[Endpoint Manager]
+[Adaptor Manager]
 [Execution Service]
 [Anomaly Detection]
 [Scheduled Task Service]
@@ -15,16 +15,16 @@ package "Gateway" {
 [Simulation 1]
 [Simulation 2]
 
-[Endpoint Manager] --> [Service Registry] : Queries
-[Endpoint Manager] --> [Abstract Endpoint] : Routes requests
-[Abstract Endpoint] --> [Service Registry] : Register
-[Adaptor 1] --> [Simulation 1] : Execute Operation
-[Adaptor 2] --> [Simulation 2] : Execute Operation
-[Endpoint Manager] --> [Execution Service] : Uses
-[Endpoint Manager] --> [Scheduled Task Service] : Uses
-[Endpoint Manager] --> [Anomaly Detection] : Uses
+[Adaptor Manager] --> [Service Registry] : Queries
+[Adaptor Manager] --> [Adaptor REST Controller] : Routes requests
+[Adaptor REST Controller] --> [Service Registry] : Registers
+[Adaptor 1] --> [Simulation 1] : Executes Operation
+[Adaptor 2] --> [Simulation 2] : Executes Operation
+[Adaptor Manager] --> [Execution Service] : Uses
+[Adaptor Manager] --> [Scheduled Task Service] : Uses
+[Adaptor Manager] --> [Anomaly Detection] : Uses
 
-note right of [Endpoint Manager]
+note right of [Adaptor Manager]
   Logs interactions
 end note
 
@@ -33,10 +33,11 @@ note left of [Service Registry]
   registered services (endpoints, status, health)
 end note
 
-[Client] --> [Endpoint Manager] : Sends requests
+[Client] --> [UI] : Uses
+[UI] --> [Adaptor Manager] : Sends requests
 [Developer] --> [Simulation 1] : Setup
-[Developer] --> [Adaptor 1] : Adds simulation
+[Developer] --> [Adaptor 1] : Registers simulation
 [Developer] --> [Simulation 2]: Setup
-[Developer] --> [Adaptor 2]: Adds simulation
+[Developer] --> [Adaptor 2]: Registers simulation
 
 @enduml
