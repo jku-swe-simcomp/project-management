@@ -4,7 +4,7 @@ Documentation and project-management related documents of the project.
 ## Continuous Integration
 The CI workflow is depicted below. 
 For deployment, check out the [local-deploy](https://github.com/jku-swe-simcomp/local-deploy)
-![ci-workflow](./continous-integration/workflow.png)
+![ci-workflow](./continuous-integration/workflow.png)
 
 ## Use Cases
 An overview of the use cases can be found  [here](use-cases/overview.md).
