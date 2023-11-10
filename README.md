@@ -1,6 +1,7 @@
 # project-management
 Documentation and project-management related documents of the project.
 
+
 ## Continuous Integration
 The CI workflow is depicted below. 
 For deployment, check out the [local-deploy](https://github.com/jku-swe-simcomp/local-deploy)
