@@ -1,6 +1,11 @@
 # project-management
 Documentation and project-management related documents of the project.
 
+## Continuous Integration
+The CI workflow is depicted below. 
+For deployment, check out the [local-deploy](https://github.com/jku-swe-simcomp/local-deploy)
+![ci-workflow](./continous-integration/workflow.png)
+
 ## Use Cases
 An overview of the use cases can be found  [here](use-cases/overview.md).
 
@@ -14,3 +19,4 @@ The lifecycle of an adaptor is depicted below.
 ## Simulation Session
 The happy path of a simulation session is depicted below.
 ![simulation-session](./endpoint-manager/sequence-happy.png)
+
