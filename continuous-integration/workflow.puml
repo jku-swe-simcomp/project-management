@@ -1,7 +1,7 @@
 @startuml
 actor Developer
 participant "Docker Engine" as Engine
-participant "Service Repo\n(GitHub Actions)" as SourceRepo
+participant "Simcomp-Services\n(GitHub Actions)" as SourceRepo
 participant "Docker Hub" as Docker
 participant "GitHub API" as GitHubAPI
 participant "Local-Deploy\n(GitHub Actions)" as TargetRepo
