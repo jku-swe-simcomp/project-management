@@ -1,0 +1,48 @@
+@startuml
+actor Developer
+participant "Docker Engine" as Engine
+participant "Service Repo\n(GitHub Actions)" as SourceRepo
+participant "Docker Hub" as Docker
+participant "GitHub API" as GitHubAPI
+participant "Local-Deploy\n(GitHub Actions)" as TargetRepo
+participant "Local-Deploy\nGit Repository" as TargetGit
+
+Developer -> SourceRepo: Trigger by push on main
+activate Developer
+activate SourceRepo
+
+SourceRepo -> SourceRepo: Build commons package
+SourceRepo -> SourceRepo: Build/Test Service Registry
+SourceRepo -> SourceRepo: Build/Test Demo Adaptor
+SourceRepo -> SourceRepo: Build/Test Webots Adaptor
+SourceRepo -> SourceRepo: Build/Test Adaptor Manager
+SourceRepo -> SourceRepo: Build all Docker images
+SourceRepo -> Docker: Push all Docker images
+activate Docker
+Docker --> SourceRepo: ok
+deactivate Docker
+SourceRepo -> GitHubAPI: Dispatch event with new image tags
+deactivate SourceRepo
+activate GitHubAPI
+
+GitHubAPI -> TargetRepo: Trigger
+deactivate GitHubAPI
+activate TargetRepo
+
+TargetRepo -> TargetGit: Checkout code
+activate TargetGit
+
+TargetRepo -> TargetRepo: Update .env with new tags
+TargetRepo -> TargetGit: Commit and push changes
+deactivate TargetGit
+deactivate TargetRepo
+
+Developer -> TargetGit: Pull changes
+activate TargetGit
+TargetGit --> Developer: ok
+deactivate TargetGit
+
+Developer -> Engine: docker-compose up -d
+activate Engine
+Engine -> Engine: start containers
+@enduml
