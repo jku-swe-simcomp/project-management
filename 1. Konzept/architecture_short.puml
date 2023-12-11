@@ -1,0 +1,22 @@
+@startuml
+
+[Service Registry]
+
+[Adaptor] ..> [Adaptor REST Controller]
+
+[Adaptor Manager]
+
+[Simulation Instance]
+
+[Adaptor Manager] --> [Service Registry] : Queries
+[Adaptor Manager] --> [Adaptor REST Controller] : Routes requests
+[Adaptor Manager] --> [Kinematics Service] : Uses
+[Adaptor REST Controller] --> [Service Registry] : Registers
+[Adaptor] --> [Simulation Instance] : Executes Operation
+
+note right of [Adaptor]
+    One Adaptor for all
+    instances of a given type (e.g. Webots).
+end note
+
+@enduml
