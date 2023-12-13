@@ -15,6 +15,8 @@ This is an overview of all the identified use-cases:
 - [uc13 - Webots Simulation](./uc13.md)
 - [uc14 - Execution Replay](./uc14.md)
 - [uc15 - Zustandsabfragen](./uc15.md)
+- [uc16 - Azure Digital Twins](./uc16.md)
+- [uc17 - Gazebo](./uc17.md)
 
 
 ## Overview by Phases
@@ -73,4 +75,4 @@ uc01 -> Adaptor-Schnittstelle bitte um Feedback
 - [uc01 - Einheitliche Interaktion mit Ausführungsinstanzen](./uc01.md)
 
 ### Gerald Waldburger
--
+- [uc17 - Gazebo](./uc17.md)
