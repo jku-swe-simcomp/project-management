@@ -1,0 +1,36 @@
++++
+title = "UC13"
+author = ["Gerald Waldburger"]
+draft = true
++++
+---
+
+## Azure Digital Twins Simulation
+
+| USE CASE **#13**       | Azure Digital Twins Simulation                                                                                                                                               |
+|-----------------------|------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| Goal in context       | Ein User will eine Azure Digital Twins Simulation über den Endpoint Manager steuern               |
+| Level                 | Secondary Task                                                                                                                                                                       |
+| Scope                 | Adaport zu Azure Digital Twins                                                                                                                                                      |
+| Priority              | Medium                                                                                                                                                                               |
+| Preconditions         | Implementierter Endpoint Manager der eine List von Endpoints verwalten kann. Dabei ist die dahinterliegende Implementierung transparent (uc01)                                                     |
+| Success end condition | Es kann eine Azure Digital Twins Simulation von dem Endpoint Manager aus gesteuert werden                                                                    |
+| Failed end condition  | Der Endpoint Manager kann keine Azure Digital Twins Simulation verwalten |
+| Primary actor         | Ein technisch kundiger Benutzer, der mit Azure Digital Twins vertraut ist.                                                                |
+| Trigger               | Verwendung einer Azure Digital Twins Simulation                                                                                                                                                    |                                                                                                                                                                               |
+| Frequency             | Oft - Standardfunktion des Systems                                                                                                                                                 |
+| Phase                 | 1                                                                                                                                                                                  |
+
+
+### Unteraufgaben
+- Erstellen einer Azure Digital Twins Simulation für den Roboter
+- Erstellen eines Controllers für den Azure Digital Twins Roboter
+- Programmierung eines Adaptors
+- Erstellen von Tests
+
+### Acceptance Criteria
+Es existier ein Adaptor Service der eine Azure Digital Twins Simulation ansteuert.
+Der Azure Digital Twins Adapator implementiert die öffentliche Schnittstelle des Endpoint Managers
+Über den Endpoint Manager lässt sich eine Azure Digital Twins Simulation steuern
+
+Es existieren Unit Tests welche die implementierten Funktionen hinreichend abdeckt.
