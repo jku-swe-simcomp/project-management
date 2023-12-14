@@ -76,3 +76,5 @@ uc01 -> Adaptor-Schnittstelle bitte um Feedback
 
 ### Gerald Waldburger
 - [uc17 - Gazebo](./uc17.md)
+- [uc16 - Azure Digital Twins](./uc16.md)
+
