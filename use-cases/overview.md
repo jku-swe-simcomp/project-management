@@ -73,4 +73,5 @@ uc01 -> Adaptor-Schnittstelle bitte um Feedback
 - [uc01 - Einheitliche Interaktion mit Ausführungsinstanzen](./uc01.md)
 
 ### Gerald Waldburger
--
+- [uc16 - Azure Digital Twins](./uc16.md)
+- 
