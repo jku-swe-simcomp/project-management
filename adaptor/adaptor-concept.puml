@@ -13,7 +13,6 @@ deactivate SR
 D -> S: Setup simulation
 activate D
 activate S
-note right of D: Operation specific to adaptor
 D -> A: Add simulation connection details
 deactivate D
 U -> SR: GET /registration
