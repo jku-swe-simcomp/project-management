@@ -1,43 +1,16 @@
 @startuml
-
-[Service Registry]
-
-[Adaptor 1] --|> [Adaptor REST Controller]
-[Adaptor 2] --|> [Adaptor REST Controller]
-
-package "Gateway" {
-[Adaptor Manager]
-[Execution Service]
-[Anomaly Detection]
-[Scheduled Task Service]
-}
-
-[Simulation 1]
-[Simulation 2]
-
-[Adaptor Manager] --> [Service Registry] : Queries
-[Adaptor Manager] --> [Adaptor REST Controller] : Routes requests
+[Webots Adaptor] ..> [Adaptor REST Controller]
+[Demo Adaptor] ..> [Adaptor REST Controller]
+[Azure Adaptor] ..> [Adaptor REST Controller]
+[Webots Simulation]
+[Azure DT]
+[Manager] --> [Service Registry] : Queries
+[Manager] --> [Adaptor REST Controller] : Routes requests
 [Adaptor REST Controller] --> [Service Registry] : Registers
-[Adaptor 1] --> [Simulation 1] : Executes Operation
-[Adaptor 2] --> [Simulation 2] : Executes Operation
-[Adaptor Manager] --> [Execution Service] : Uses
-[Adaptor Manager] --> [Scheduled Task Service] : Uses
-[Adaptor Manager] --> [Anomaly Detection] : Uses
-
-note right of [Adaptor Manager]
-  Logs interactions
-end note
-
-note left of [Service Registry]
-  Keeps information about 
-  registered services (endpoints, status, health)
-end note
-
+[Webots Adaptor] --> [Webots Simulation] : Executes Operation
+[Azure Adaptor] --> [Azure DT] : Executes Operation
+[Manager] --> [Axis Converter] : Uses
 [Client] --> [UI] : Uses
-[UI] --> [Adaptor Manager] : Sends requests
-[Developer] --> [Simulation 1] : Setup
-[Developer] --> [Adaptor 1] : Registers simulation
-[Developer] --> [Simulation 2]: Setup
-[Developer] --> [Adaptor 2]: Registers simulation
+[UI] --> [Manager] : Sends requests
 
 @enduml
